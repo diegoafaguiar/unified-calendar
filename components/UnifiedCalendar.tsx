@@ -9,8 +9,8 @@ const fetchCalendarEvents = async () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      googleAccessToken: "your-google-access-token",
-      outlookAccessToken: "your-outlook-access-token",
+      googleAccessToken: process.env.NEXT_PUBLIC_GOOGLE_ACCESS_TOKEN,
+      outlookAccessToken: process.env.NEXT_PUBLIC_OUTLOOK_ACCESS_TOKEN,
     }),
   });
   if (!res.ok) {
