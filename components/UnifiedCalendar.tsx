@@ -33,7 +33,7 @@ const UnifiedCalendar: React.FC = () => {
   }, [data, setEvents]);
 
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error loading events: {error.message}</div>;
+  if (error instanceof Error) return <div>Error loading events: {error.message}</div>;
 
   return (
     <div className="calendar">
@@ -41,8 +41,8 @@ const UnifiedCalendar: React.FC = () => {
         events.map((event, index) => (
           <div key={index} className="event">
             <h3>{event.subject || event.summary}</h3>
-            <p>{event.start.dateTime || event.start.date}</p>
-            <p>{event.end.dateTime || event.end.date}</p>
+            <p>{event.start?.dateTime || event.start?.date}</p>
+            <p>{event.end?.dateTime || event.end?.date}</p>
           </div>
         ))
       ) : (
